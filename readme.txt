@@ -5,33 +5,33 @@ Requires at least: 2.5
 Tested up to: 3.2.0
 Contributors: lukasznowicki
 Donate link: http://wordpress.ujagody.pl/plugins/google-analytics/
-Stable tag: 0.5.1
+Stable tag: 0.5.2
 
-This plugin adds tracking code for Google Analytics to your WordPress <head> section, so you can authorize your site in Google Webmaster Tools.
+This plugin adds tracking code for Google Analytics to your WordPress "head" section, so you can authorize your site in Google Webmaster Tools.
 
 == Description == 
 
-This plugin adds tracking code for Google Analytics to your WordPress site. Unlike other plugins, code is added to the <head> section, so you can authorize your site in Google Webmaster Tools.
+This plugin adds tracking code for Google Analytics to your WordPress site. Unlike other plugins, code is added to the "head" section, so you can authorize your site in Google Webmaster Tools.
 
-There are many Google Analytics plugins for WordPress. I used a few of those myself and it worked well. The trouble began when I willed to use Google Webmaster’s Tools.
+There are many Google Analytics plugins for WordPress. I used a few of those myself and it worked well. The trouble began when I willed to use Google Webmaster's Tools.
 
-It turned out that I can authenticate the ownership of the website using my Google Analytics account. Where’s the catch? Google Webmaster’s Tools expects that the code will be located at the <head> section and all the plugs have placed it at the very end of the page (apart from this case – very rightly).
+It turned out that I can authenticate the ownership of the website using my Google Analytics account. Where's the catch? Google Webmaster's Tools expects that the code will be located at the <head> section and all the plugs have placed it at the very end of the page (apart from this case - very rightly).
 
-Therefore, I created a plug-in called “Analytics Head“, which places tracking code in the head section of the webpage.
+Therefore, I created a plug-in called "Analytics Head", which places tracking code in the head section of the webpage.
 
 == Installation ==
 
 1. Upload `analytics-home` directory to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Provide your Google ID in the Settings - Analytics Head section
-1. That's all folks.
+1. That's all folks, have fun :)
 
 == Frequently Asked Questions ==
 
 = How do I get Google Tracking code? =
 Register at http://www.google.com/analytics/, add your site and then Google will provide you valid Google Analytics code (something like UA-xxxxxxxx-y)
 = Why do I need this code in the head section? Google told me that the code should be put just before </html> tag =
-It is for Google Webmaster Tools users. You can prove that your site is owned by you using Google code. However, in that case, Google will require that the code was placed in the <head> site.
+It is for Google Webmaster Tools users. You can prove that your site is owned by you using Google code. However, in that case, Google will require that the code was placed in the "head" section of the site.
 = Do I need to know how to use html, php or similar techniques? =
 No.
 = Is it free? =
@@ -42,6 +42,12 @@ Yes, it is under GPLv2 licence. However, you can donate me a few dollars if it m
 This is first public release, so you do not need to know anything. However, because of my sites, plugin tries to remove old version's setting while it is activated.
 
 == Changelog ==
+
+= 0.5.2 =
+* Release date: 2011-06-18
+* Status: Stable
+* Compatibility: 3.x and previous
+* On some machines, plugin can fire "wordpress Fatal error" - like many other plugins as I read on the net. It is fixed now.
 
 = 0.5.1 =
 * Release date: 2011-06-14
@@ -72,7 +78,3 @@ This is first public release, so you do not need to know anything. However, beca
 = 0.1 =
 * Release date: 2011-04-08)
 * Status: Prealpha
-
-== Screenshots ==
-
-It is all transparent to you, have fun :)

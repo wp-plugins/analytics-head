@@ -5,7 +5,7 @@
   Plugin URI: http://wordpress.ujagody.pl/plugins/google-analytics/
  Description: This plugin adds tracking code for <strong>Google Analytics</strong> to your WordPress site. Unlike other plugins, code is added to the &lt;head&gt; section, so you can authorize your site in <strong>Google Webmaster Tools</strong>.
       Author: Lukasz Nowicki
-     Version: 0.5.1
+     Version: 0.5.2
   Author URI: http://web.ujagody.pl/
      License: GPLv2
 */
@@ -63,8 +63,12 @@
          // Adding admin menu
          add_action('admin_menu',Array($this,'menu'));
 
-         // Add analytics code if it is possible and needed
-         $this->check_add_code();
+         // Add analytics code if it is possible and needed You should do it after functions will be loaded.
+         add_action('after_setup_theme',array($this,'check_add_code'));
+      }
+
+      public function setup()
+      {
       }
 
       public function add_code()
