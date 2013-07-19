@@ -1,12 +1,11 @@
-<?php
+﻿<?php
 
 /*
  Plugin Name: Analytics Head
   Plugin URI: http://wordpress.ujagody.pl/plugins/google-analytics/
  Description: This plugin adds tracking code for <strong>Google Analytics</strong> to your WordPress site. Unlike other plugins, code is added to the &lt;head&gt; section, so you can authorize your site in <strong>Google Webmaster Tools</strong>.
       Author: Lukasz Nowicki
-     Version: 0.5.2
-  Author URI: http://web.ujagody.pl/
+     Version: 0.5.3
      License: GPLv2
 */
 
@@ -15,7 +14,7 @@
       // Basic informations
       protected   $PluginName='Analytics Head';
       protected   $PluginCode='ln-plugin-analytics-head';
-      protected   $PluginVersion='0.5.1';
+      protected   $PluginVersion='0.5.3';
       protected   $PluginURL='http://wordpress.ujagody.pl/plugins/google-analytics/';
       protected   $PluginFile='analytics_head.php';
       private     $OptionsName='wordpress_lnpo_ah';
@@ -56,8 +55,8 @@
          // Load options into $Options variable
          $this->serve_variables();
 
-         // Yhrow warning if user didn't provided Google ID
-         if (((!isset($_POST['submit']))&&($this->Options['GoogleID']==''))||((isset($_POST['submit']))&&($_POST['google_id']=='')))
+         // Throw warning if user didn't provided Google ID
+         if (((!isset($_POST['gah_submit']))&&($this->Options['GoogleID']==''))||((isset($_POST['gah_submit']))&&($_POST['google_id']=='')))
             add_action('admin_notices',Array($this,'warning'));
 
          // Adding admin menu
@@ -164,7 +163,7 @@
 
       private function submit_check()
       {
-         if (isset($_POST['submit']))
+         if (isset($_POST['gah_submit']))
          {
             // Check if user is logged admin
             if (function_exists('current_user_can')&&!current_user_can('manage_options'))
@@ -193,7 +192,7 @@
   <h2>'.$title.'</h2>
   <p>'.__('This plugin has only two settings. Google Analytics code and the option of hiding the code for users logged on with administrator privileges. This will not count your visit that does not distort the results in the service.',$this->TD).'</p>
   <form name="formlnp" method="post">
-   <input type="hidden" name="submit" value="submit">
+   <input type="hidden" name="gah_submit" value="submit">
    <table class="form-table">
     <tr valign="top">
      <th scope="row">'.__('Google Analytics ID',$this->TD).'</th>
@@ -214,7 +213,7 @@
      </td>
     </tr>
    </table>
-   <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="'.__('Save Changes').'" /></p>
+   <p class="submit"><input type="submit" name="gah_submit" id="submit" class="button-primary" value="'.__('Save Changes').'" /></p>
   </form>
   <p>'.__('',$this->TD).'</p>
   <p>'.$this->Footer.'</p>
@@ -228,6 +227,3 @@
 
    // End of file, thank you for watching ;)
    // Lukasz Nowicki jagoo@post.pl
-   // My wordpress site: http://wordpress.ujagody.pl/
-   // Plugin site: http://wordpress.ujagody.pl/plugins/google-analytics/
-   // My web development site: http://web.ujagody.pl/
