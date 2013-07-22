@@ -1,11 +1,11 @@
-﻿<?php
+<?php
 
 /*
  Plugin Name: Analytics Head
   Plugin URI: http://wordpress.ujagody.pl/plugins/google-analytics/
  Description: This plugin adds tracking code for <strong>Google Analytics</strong> to your WordPress site. Unlike other plugins, code is added to the &lt;head&gt; section, so you can authorize your site in <strong>Google Webmaster Tools</strong>.
       Author: Lukasz Nowicki
-     Version: 0.5.3
+     Version: 0.5.4
      License: GPLv2
 */
 
@@ -14,7 +14,7 @@
       // Basic informations
       protected   $PluginName='Analytics Head';
       protected   $PluginCode='ln-plugin-analytics-head';
-      protected   $PluginVersion='0.5.3';
+      protected   $PluginVersion='0.5.4';
       protected   $PluginURL='http://wordpress.ujagody.pl/plugins/google-analytics/';
       protected   $PluginFile='analytics_head.php';
       private     $OptionsName='wordpress_lnpo_ah';
@@ -218,12 +218,10 @@
   <p>'.__('',$this->TD).'</p>
   <p>'.$this->Footer.'</p>
  </div>';
-
       }
    }
 
    // Run plugin
    $AH=new AnalyticsHead();
-
    // End of file, thank you for watching ;)
    // Lukasz Nowicki jagoo@post.pl
