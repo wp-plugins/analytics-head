@@ -4,7 +4,7 @@ Tags: Google, Analytics, Script, Webmaster, Tools, Tracking, Code, Head, Header,
 Requires at least: 2.7
 Tested up to: 4.3
 Contributors: lukasznowicki
-Stable tag: 0.5.5
+Stable tag: 0.5.6
 
 This plugin adds tracking code for Google Analytics to your WordPress "head" section, so you can authorize your site in Google Webmaster Tools.
 
@@ -41,6 +41,13 @@ Yes, it is under GPLv2 licence. However, you can donate me a few dollars if it m
 This is first public release, so you do not need to know anything. However, because of my sites, plugin tries to remove old version's setting while it is activated.
 
 == Changelog ==
+
+= 0.5.6 =
+* Release date: 2015-05-17
+* Status: Stable
+* Compatibility: 4.x and previous
+* New Google Analytics code
+* Changed after_setup_theme hook with wp_loaded hook
 
 = 0.5.5 =
 * Release date: 2015-05-17

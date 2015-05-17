@@ -4,7 +4,7 @@
   Plugin URI: http://wordpress.ujagody.pl/plugins/google-analytics/
  Description: This plugin adds tracking code for <strong>Google Analytics</strong> to your WordPress site. Unlike other plugins, code is added to the &lt;head&gt; section, so you can authorize your site in <strong>Google Webmaster Tools</strong>.
       Author: Lukasz Nowicki
-     Version: 0.5.5
+     Version: 0.5.6
      License: GPLv2
 */
 
@@ -13,7 +13,7 @@
       // Basic informations
       protected   $PluginName='Analytics Head';
       protected   $PluginCode='ln-plugin-analytics-head';
-      protected   $PluginVersion='0.5.5';
+      protected   $PluginVersion='0.5.6';
       protected   $PluginURL='http://lukasznowicki.info/analytics-head/';
       protected   $PluginFile='analytics_head.php';
       private     $OptionsName='wordpress_lnpo_ah';
@@ -58,7 +58,7 @@
          add_action('admin_menu',Array($this,'menu'));
 
          // Add analytics code if it is possible and needed You should do it after functions will be loaded.
-         add_action('after_setup_theme',array($this,'check_add_code'));
+         add_action('wp_loaded',array($this,'check_add_code'));
       }
 
       public function setup()
@@ -68,16 +68,18 @@
       public function add_code()
       {
          echo "<!-- ".__('Added by Analytics Head plugin',$this->TD).': '.$this->PluginURL." -->
-<script type=\"text/javascript\">
-   var _gaq = _gaq || [];
-   _gaq.push(['_setAccount', '".$this->Options['GoogleID']."']);
-   _gaq.push(['_trackPageview']);
-   (function(){
-      var ga=document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src=('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s=document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-   })();
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '".$this->Options['GoogleID']."', 'auto');
+ga('send', 'pageview');
+
 </script>
+<!-- End Google Analytics -->
 ";
       }
 
