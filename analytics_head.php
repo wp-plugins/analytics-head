@@ -1,11 +1,10 @@
 <?php
-
 /*
  Plugin Name: Analytics Head
   Plugin URI: http://wordpress.ujagody.pl/plugins/google-analytics/
  Description: This plugin adds tracking code for <strong>Google Analytics</strong> to your WordPress site. Unlike other plugins, code is added to the &lt;head&gt; section, so you can authorize your site in <strong>Google Webmaster Tools</strong>.
       Author: Lukasz Nowicki
-     Version: 0.5.4
+     Version: 0.5.5
      License: GPLv2
 */
 
@@ -14,8 +13,8 @@
       // Basic informations
       protected   $PluginName='Analytics Head';
       protected   $PluginCode='ln-plugin-analytics-head';
-      protected   $PluginVersion='0.5.4';
-      protected   $PluginURL='http://wordpress.ujagody.pl/plugins/google-analytics/';
+      protected   $PluginVersion='0.5.5';
+      protected   $PluginURL='http://lukasznowicki.info/analytics-head/';
       protected   $PluginFile='analytics_head.php';
       private     $OptionsName='wordpress_lnpo_ah';
       private     $Defaults=Array('GoogleID'=>'','HideForAdmins'=>true);
@@ -25,8 +24,8 @@
       private     $Footer='';
       private     $TD='';
 
-      public function __construct()
-      {
+    public function __construct()
+    {
          // Prepare die string for direct calls
          $this->DirectCall='<h1>'.$this->PluginName.'</h1><h2>'.$this->PluginVersion.'</h2><p>Hello, there!</p><p>Please, do not call me directly, because there is nothing I can do here.</p><p>I\'m just a plugin, so you should call me within <a href="http://wordpress.org/">Wordpress</a> installation.</p><p>Learn more about <a href="'.$this->PluginURL.'">'.$this->PluginName.' plugin</a>.</p>';
 
@@ -37,10 +36,6 @@
          // Prepare Plugin Underscore code-name
          $this->PluginUndercode=str_replace('-','_',$this->PluginCode);
          $this->TD=$this->PluginCode;
-
-         // Load language domain
-         if(!load_plugin_textdomain($this->TD,'/wp-content/languages/'))
-            load_plugin_textdomain($this->TD,'/wp-content/plugins/'.dirname(plugin_basename(__FILE__)));
 
          // Footer information
          $this->Footer=__('This plugin is distributed under the terms of GPLv2. For more information see',$this->TD).': <a href="'.$this->PluginURL.'">'.$this->PluginName.'</a>';
@@ -221,7 +216,12 @@
       }
    }
 
-   // Run plugin
-   $AH=new AnalyticsHead();
+   add_action( 'init', 'AH_start_plugin' );
+
+   function AH_start_plugin() {
+        load_plugin_textdomain( 'ln-plugin-analytics-head', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+        $AH = new AnalyticsHead();
+   }
+
    // End of file, thank you for watching ;)
    // Lukasz Nowicki jagoo@post.pl
